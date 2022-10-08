@@ -21,7 +21,7 @@
 		<br /><hr /><br />
 
 		<h3>Vulnerable Level</h3>
-		<p>Low level will not check the contents of the file being uploaded in any way. It relies only on trust.</p>
+		<p>Vulnerable level will not check the contents of the file being uploaded in any way. It relies only on trust.</p>
 
 		<br />
 
