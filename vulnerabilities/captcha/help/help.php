@@ -22,7 +22,7 @@
 
 		<br /><hr /><br />
 
-		<h3>Low Level</h3>
+		<h3>Vulnerable Level</h3>
 		<p>The issue with this CAPTCHA is that it is easily bypassed. The developer has made the assumption that all users will progress through screen 1, complete the CAPTCHA, and then
 			move on to the next screen where the password is actually updated. By submitting the new password directly to the change page, the user may bypass the CAPTCHA system.</p>
 
@@ -30,26 +30,6 @@
 		<pre>Spoiler: <span class="spoiler">?step=2&password_new=password&password_conf=password&Change=Change</span>.</pre>
 
 		<br />
-
-		<h3>Medium Level</h3>
-		<p>The developer has attempted to place state around the session and keep track of whether the user successfully completed the
-			CAPTCHA prior to submitting data. Because the state variable (Spoiler: <span class="spoiler">passed_captcha</span>) is on the client side,
-			it can also be manipulated by the attacker like so:</p>
-		<pre>Spoiler: <span class="spoiler">?step=2&password_new=password&password_conf=password&passed_captcha=true&Change=Change</span>.</pre>
-
-		<br />
-
-		<h3>High Level</h3>
-		<p>There has been development code left in, which was never removed in production. It is possible to mimic the development values, to allow
-			invalid values in be placed into the CAPTCHA field.</p>
-		<p>You will need to spoof your user-agent (Spoiler: <span class="spoiler">reCAPTCHA</span>) as well as use the CAPTCHA value of
-			(Spoiler: <span class="spoiler">hidd3n_valu3</span>) to skip the check.</p>
-
-		<br />
-
-		<h3>Impossible Level</h3>
-		<p>In the impossible level, the developer has removed all avenues of attack. The process has been simplified so that data and CAPTCHA verification occurs in one
-			single step. Alternatively, the developer could have moved the state variable server side (from the medium level), so the user cannot alter it.</p>
 	</div></td>
 	</tr>
 	</table>

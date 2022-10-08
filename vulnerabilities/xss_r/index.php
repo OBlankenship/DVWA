@@ -15,17 +15,11 @@ dvwaDatabaseConnect();
 
 $vulnerabilityFile = '';
 switch( $_COOKIE[ 'security' ] ) {
-	case 'low':
-		$vulnerabilityFile = 'low.php';
-		break;
-	case 'medium':
-		$vulnerabilityFile = 'medium.php';
-		break;
-	case 'high':
-		$vulnerabilityFile = 'high.php';
+	case 'vulnerable':
+		$vulnerabilityFile = 'vulnerable.php';
 		break;
 	default:
-		$vulnerabilityFile = 'impossible.php';
+		$vulnerabilityFile = 'secure.php';
 		break;
 }
 
@@ -42,9 +36,6 @@ $page[ 'body' ] .= "
 				<input type=\"text\" name=\"name\">
 				<input type=\"submit\" value=\"Submit\">
 			</p>\n";
-
-if( $vulnerabilityFile == 'impossible.php' )
-	$page[ 'body' ] .= "			" . tokenField();
 
 $page[ 'body' ] .= "
 		</form>

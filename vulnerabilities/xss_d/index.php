@@ -15,27 +15,17 @@ dvwaDatabaseConnect();
 
 $vulnerabilityFile = '';
 switch( $_COOKIE[ 'security' ] ) {
-	case 'low':
-		$vulnerabilityFile = 'low.php';
-		break;
-	case 'medium':
-		$vulnerabilityFile = 'medium.php';
-		break;
-	case 'high':
-		$vulnerabilityFile = 'high.php';
+	case 'vulnerable':
+		$vulnerabilityFile = 'vulnerable.php';
 		break;
 	default:
-		$vulnerabilityFile = 'impossible.php';
+		$vulnerabilityFile = 'secure.php';
 		break;
 }
 
 require_once DVWA_WEB_PAGE_TO_ROOT . "vulnerabilities/xss_d/source/{$vulnerabilityFile}";
 
-# For the impossible level, don't decode the querystring
 $decodeURI = "decodeURI";
-if ($vulnerabilityFile == 'impossible.php') {
-	$decodeURI = "";
-}
 
 $page[ 'body' ] = <<<EOF
 <div class="body_padded">

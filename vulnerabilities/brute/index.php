@@ -15,18 +15,11 @@ dvwaDatabaseConnect();
 $method            = 'GET';
 $vulnerabilityFile = '';
 switch( $_COOKIE[ 'security' ] ) {
-	case 'low':
-		$vulnerabilityFile = 'low.php';
-		break;
-	case 'medium':
-		$vulnerabilityFile = 'medium.php';
-		break;
-	case 'high':
-		$vulnerabilityFile = 'high.php';
+	case 'vulnerable':
+		$vulnerabilityFile = 'vulnerable.php';
 		break;
 	default:
-		$vulnerabilityFile = 'impossible.php';
-		$method = 'POST';
+		$vulnerabilityFile = 'secure.php';
 		break;
 }
 
@@ -46,9 +39,6 @@ $page[ 'body' ] .= "
 			<input type=\"password\" AUTOCOMPLETE=\"off\" name=\"password\"><br />
 			<br />
 			<input type=\"submit\" value=\"Login\" name=\"Login\">\n";
-
-if( $vulnerabilityFile == 'high.php' || $vulnerabilityFile == 'impossible.php' )
-	$page[ 'body' ] .= "			" . tokenField();
 
 $page[ 'body' ] .= "
 		</form>

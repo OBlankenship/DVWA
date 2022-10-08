@@ -16,18 +16,11 @@ dvwaDatabaseConnect();
 $method            = 'GET';
 $vulnerabilityFile = '';
 switch( $_COOKIE[ 'security' ] ) {
-	case 'low':
-		$vulnerabilityFile = 'low.php';
-		break;
-	case 'medium':
-		$vulnerabilityFile = 'medium.php';
-		$method = 'POST';
-		break;
-	case 'high':
-		$vulnerabilityFile = 'high.php';
+	case 'vulnerable':
+		$vulnerabilityFile = 'vulnerable.php';
 		break;
 	default:
-		$vulnerabilityFile = 'impossible.php';
+		$vulnerabilityFile = 'secure.php';
 		break;
 }
 
@@ -35,35 +28,30 @@ require_once DVWA_WEB_PAGE_TO_ROOT . "vulnerabilities/sqli/source/{$vulnerabilit
 
 $page[ 'body' ] .= "
 <div class=\"body_padded\">
-	<h1>Vulnerability: SQL Injection</h1>
+<h1>Vulnerability: SQL Injection</h1>
 
-	<div class=\"vulnerable_code_area\">";
-if( $vulnerabilityFile == 'high.php' ) {
-	$page[ 'body' ] .= "Click <a href=\"#\" onclick=\"javascript:popUp('session-input.php');return false;\">here to change your ID</a>.";
+<div class=\"vulnerable_code_area\">";
+
+
+$page[ 'body' ] .= "
+	<form action=\"#\" method=\"{$method}\">
+		<p>
+			User ID:";
+if( $vulnerabilityFile == 'medium.php' ) {
+	$page[ 'body' ] .= "\n				<select name=\"id\">";
+
+	for( $i = 1; $i < $number_of_rows + 1 ; $i++ ) { $page[ 'body' ] .= "<option value=\"{$i}\">{$i}</option>"; }
+	$page[ 'body' ] .= "</select>";
 }
-else {
-	$page[ 'body' ] .= "
-		<form action=\"#\" method=\"{$method}\">
-			<p>
-				User ID:";
-	if( $vulnerabilityFile == 'medium.php' ) {
-		$page[ 'body' ] .= "\n				<select name=\"id\">";
+else
+	$page[ 'body' ] .= "\n				<input type=\"text\" size=\"15\" name=\"id\">";
 
-		for( $i = 1; $i < $number_of_rows + 1 ; $i++ ) { $page[ 'body' ] .= "<option value=\"{$i}\">{$i}</option>"; }
-		$page[ 'body' ] .= "</select>";
-	}
-	else
-		$page[ 'body' ] .= "\n				<input type=\"text\" size=\"15\" name=\"id\">";
+$page[ 'body' ] .= "\n				<input type=\"submit\" name=\"Submit\" value=\"Submit\">
+		</p>\n";
 
-	$page[ 'body' ] .= "\n				<input type=\"submit\" name=\"Submit\" value=\"Submit\">
-			</p>\n";
+$page[ 'body' ] .= "
+	</form>";
 
-	if( $vulnerabilityFile == 'impossible.php' )
-		$page[ 'body' ] .= "			" . tokenField();
-
-	$page[ 'body' ] .= "
-		</form>";
-}
 $page[ 'body' ] .= "
 		{$html}
 	</div>

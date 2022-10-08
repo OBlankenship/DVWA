@@ -24,27 +24,11 @@
 
 		<br /><hr /><br />
 
-		<h3>Low Level</h3>
-		<p>Low level will not check the requested input, before including it to be used in the output text.</p>
+		<h3>Vulnerable Level</h3>
+		<p>Vulnerable level will not check the requested input, before including it to be used in the output text.</p>
 		<pre>Spoiler: <span class="spoiler">?name=&lt;script&gt;alert("XSS");&lt;/script&gt;</span>.</pre>
 
 		<br />
-
-		<h3>Medium Level</h3>
-		<p>The developer has tried to add a simple pattern matching to remove any references to "&lt;script&gt;", to disable any JavaScript.</p>
-		<pre>Spoiler: <span class="spoiler">Its cAse sENSiTiVE</span>.</pre>
-
-		<br />
-
-		<h3>High Level</h3>
-		<p>The developer now believes they can disable all JavaScript by removing the pattern "&lt;s*c*r*i*p*t".</p>
-		<pre>Spoiler: <span class="spoiler">HTML events</span>.</pre>
-
-		<br />
-
-		<h3>Impossible Level</h3>
-		<p>Using inbuilt PHP functions (such as "<?php echo dvwaExternalLinkUrlGet( 'https://secure.php.net/manual/en/function.htmlspecialchars.php', 'htmlspecialchars()' ); ?>"),
-			its possible to escape any values which would alter the behaviour of the input.</p>
 	</div></td>
 	</tr>
 	</table>

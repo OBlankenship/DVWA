@@ -15,17 +15,11 @@ dvwaDatabaseConnect();
 
 $vulnerabilityFile = '';
 switch( $_COOKIE[ 'security' ] ) {
-	case 'low':
-		$vulnerabilityFile = 'low.php';
-		break;
-	case 'medium':
-		$vulnerabilityFile = 'medium.php';
-		break;
-	case 'high':
-		$vulnerabilityFile = 'high.php';
+	case 'vulnerable':
+		$vulnerabilityFile = 'vulnerable.php';
 		break;
 	default:
-		$vulnerabilityFile = 'impossible.php';
+		$vulnerabilityFile = 'secure.php';
 		break;
 }
 
@@ -53,11 +47,6 @@ $page[ 'body' ] .= "
 		</div><br />
 		<form action=\"#\" method=\"GET\">";
 
-if( $vulnerabilityFile == 'impossible.php' ) {
-	$page[ 'body' ] .= "
-			Current password:<br />
-			<input type=\"password\" AUTOCOMPLETE=\"off\" name=\"password_current\"><br />";
-}
 
 $page[ 'body' ] .= "
 			New password:<br />
@@ -66,9 +55,6 @@ $page[ 'body' ] .= "
 			<input type=\"password\" AUTOCOMPLETE=\"off\" name=\"password_conf\"><br />
 			<br />
 			<input type=\"submit\" value=\"Change\" name=\"Change\">\n";
-
-if( $vulnerabilityFile == 'high.php' || $vulnerabilityFile == 'impossible.php' )
-	$page[ 'body' ] .= "			" . tokenField();
 
 $page[ 'body' ] .= "
 		</form>

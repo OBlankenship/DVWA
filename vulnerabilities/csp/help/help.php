@@ -16,28 +16,11 @@
 
 		<br /><hr /><br />
 
-		<h3>Low Level</h3>
+		<h3>Vulnerable Level</h3>
 		<p>Examine the policy to find all the sources that can be used to host external script files.</p>
 		<pre>Spoiler: <span class="spoiler">Scripts can be included from Pastebin or Toptal (use to be Hastebin), try storing some JavaScript on there and then loading it in.</span></pre>
 
 		<br />
-
-		<h3>Medium Level</h3>
-		<p>The CSP policy tries to use a nonce to prevent inline scripts from being added by attackers.</p>
-		<pre>Spoiler: <span class="spoiler">Examine the nonce and see how it varies (or doesn't).</span></pre>
-
-		<br />
-
-		<h3>High Level</h3>
-		<p>The page makes a JSONP call to source/jsonp.php passing the name of the function to callback to, you need to modify the jsonp.php script to change the callback function.</p>
-		<pre>Spoiler: <span class="spoiler">The JavaScript on the page will execute whatever is returned by the page, changing this to your own code will execute that instead</span></pre>
-
-		<br />
-
-		<h3>Impossible Level</h3>
-		<p>
-			This level is an update of the high level where the JSONP call has its callback function hardcoded and the CSP policy is locked down to only allow external scripts.
-		</p>
 	</div></td>
 	</tr>
 	</table>

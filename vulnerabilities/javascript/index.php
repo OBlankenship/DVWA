@@ -15,17 +15,11 @@ dvwaDatabaseConnect();
 
 $vulnerabilityFile = '';
 switch( $_COOKIE[ 'security' ] ) {
-	case 'low':
-		$vulnerabilityFile = 'low.php';
-		break;
-	case 'medium':
-		$vulnerabilityFile = 'medium.php';
-		break;
-	case 'high':
-		$vulnerabilityFile = 'high.php';
+	case 'vulnerable':
+		$vulnerabilityFile = 'vulnerable.php';
 		break;
 	default:
-		$vulnerabilityFile = 'impossible.php';
+		$vulnerabilityFile = 'secure.php';
 		break;
 }
 
@@ -39,29 +33,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 		if ($phrase == "success") {
 			switch( $_COOKIE[ 'security' ] ) {
-				case 'low':
+				case 'vulnerable':
 					if ($token == md5(str_rot13("success"))) {
 						$message = "<p style='color:red'>Well done!</p>";
 					} else {
 						$message = "<p>Invalid token.</p>";
 					}
 					break;
-				case 'medium':
-					if ($token == strrev("XXsuccessXX")) {
-						$message = "<p style='color:red'>Well done!</p>";
-					} else {
-						$message = "<p>Invalid token.</p>";
-					}
-					break;
-				case 'high':
-					if ($token == hash("sha256", hash("sha256", "XX" . strrev("success")) . "ZZ")) {
-						$message = "<p style='color:red'>Well done!</p>";
-					} else {
-						$message = "<p>Invalid token.</p>";
-					}
-					break;
 				default:
-					$vulnerabilityFile = 'impossible.php';
+					$vulnerabilityFile = 'secure.php';
 					break;
 			}
 		} else {
@@ -72,17 +52,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	}
 }
 
-if ( $_COOKIE[ 'security' ] == "impossible" ) {
-$page[ 'body' ] = <<<EOF
-<div class="body_padded">
-	<h1>Vulnerability: JavaScript Attacks</h1>
-
-	<div class="vulnerable_code_area">
-	<p>
-		You can never trust anything that comes from the user or prevent them from messing with it and so there is no impossible level.
-	</p>
-EOF;
-} else {
 $page[ 'body' ] = <<<EOF
 <div class="body_padded">
 	<h1>Vulnerability: JavaScript Attacks</h1>
@@ -100,7 +69,6 @@ $page[ 'body' ] = <<<EOF
 		<input type="submit" id="send" name="send" value="Submit" />
 	</form>
 EOF;
-}
 
 require_once DVWA_WEB_PAGE_TO_ROOT . "vulnerabilities/javascript/source/{$vulnerabilityFile}";
 

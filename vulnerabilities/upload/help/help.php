@@ -20,27 +20,12 @@
 
 		<br /><hr /><br />
 
-		<h3>Low Level</h3>
+		<h3>Vulnerable Level</h3>
 		<p>Low level will not check the contents of the file being uploaded in any way. It relies only on trust.</p>
 		<pre>Spoiler: <span class="spoiler">Upload any valid PHP file with command in it</span>.</pre>
 
 		<br />
 
-		<h3>Medium Level</h3>
-		<p>When using the medium level, it will check the reported file type from the client when its being uploaded.</p>
-		<pre>Spoiler: <span class="spoiler">Worth looking for any restrictions within any "hidden" form fields</span>.</pre>
-
-		<br />
-
-		<h3>High Level</h3>
-		<p>Once the file has been received from the client, the server will try to resize any image that was included in the request.</p>
-		<pre>Spoiler: <span class="spoiler">need to link in another vulnerability, such as file inclusion</span>.</pre>
-
-		<br />
-
-		<h3>Impossible Level</h3>
-		<p>This will check everything from all the levels so far, as well then to re-encode the image. This will make a new image, therefor stripping
-			any "non-image" code (including metadata).</p>
 	</div></td>
 	</tr>
 	</table>

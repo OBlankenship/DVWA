@@ -16,17 +16,11 @@ dvwaDatabaseConnect();
 
 $vulnerabilityFile = '';
 switch( $_COOKIE[ 'security' ] ) {
-	case 'low':
-		$vulnerabilityFile = 'low.php';
-		break;
-	case 'medium':
-		$vulnerabilityFile = 'medium.php';
-		break;
-	case 'high':
-		$vulnerabilityFile = 'high.php';
+	case 'vulnerable':
+		$vulnerabilityFile = 'vulnerable.php';
 		break;
 	default:
-		$vulnerabilityFile = 'impossible.php';
+		$vulnerabilityFile = 'secure.php';
 		break;
 }
 
@@ -59,12 +53,6 @@ $page[ 'body' ] .= ">
 
 			<input type=\"hidden\" name=\"step\" value=\"1\" />\n";
 
-if( $vulnerabilityFile == 'impossible.php' ) {
-	$page[ 'body' ] .= "
-			Current password:<br />
-			<input type=\"password\" AUTOCOMPLETE=\"off\" name=\"password_current\"><br />";
-}
-
 $page[ 'body' ] .= "			New password:<br />
 			<input type=\"password\" AUTOCOMPLETE=\"off\" name=\"password_new\"><br />
 			Confirm new password:<br />
@@ -73,9 +61,6 @@ $page[ 'body' ] .= "			New password:<br />
 			" . recaptcha_get_html( $_DVWA[ 'recaptcha_public_key' ] );
 if( $vulnerabilityFile == 'high.php' )
 	$page[ 'body' ] .= "\n\n			<!-- **DEV NOTE**   Response: 'hidd3n_valu3'   &&   User-Agent: 'reCAPTCHA'   **/DEV NOTE** -->\n";
-
-if( $vulnerabilityFile == 'high.php' || $vulnerabilityFile == 'impossible.php' )
-	$page[ 'body' ] .= "\n			" . tokenField();
 
 $page[ 'body' ] .= "
 			<br />

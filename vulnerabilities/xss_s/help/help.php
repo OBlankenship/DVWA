@@ -23,27 +23,12 @@
 
 		<br /><hr /><br />
 
-		<h3>Low Level</h3>
-		<p>Low level will not check the requested input, before including it to be used in the output text.</p>
+		<h3>Vulnerable Level</h3>
+		<p>Vulnerable level will not check the requested input, before including it to be used in the output text.</p>
 		<pre>Spoiler: <span class="spoiler">Either name or message field: &lt;script&gt;alert("XSS");&lt;/script&gt;</span>.</pre>
 
 		<br />
 
-		<h3>Medium Level</h3>
-		<p>The developer had added some protection, however hasn't done every field the same way.</p>
-		<pre>Spoiler: <span class="spoiler">name field: &lt;sCriPt&gt;alert("XSS");&lt;/sCriPt&gt;</span>.</pre>
-
-		<br />
-
-		<h3>High Level</h3>
-		<p>The developer believe they have disabled all script usage by removing the pattern "&lt;s*c*r*i*p*t".</p>
-		<pre>Spoiler: <span class="spoiler">HTML events</span>.</pre>
-
-		<br />
-
-		<h3>Impossible Level</h3>
-		<p>Using inbuilt PHP functions (such as "<?php echo dvwaExternalLinkUrlGet( 'https://secure.php.net/manual/en/function.htmlspecialchars.php', 'htmlspecialchars()' ); ?>"),
-			its possible to escape any values which would alter the behaviour of the input.</p>
 	</div></td>
 	</tr>
 	</table>

@@ -27,36 +27,11 @@
 
 		<br /><hr /><br />
 
-		<h3>Low Level</h3>
+		<h3>Vulnerable Level</h3>
 		<p>The developer has completely missed out <u>any protections methods</u>, allowing for anyone to try as many times as they wish, to login to any user without any repercussions.</p>
 
 		<br />
 
-		<h3>Medium Level</h3>
-		<p>This stage adds a sleep on the failed login screen. This mean when you login incorrectly, there will be an extra two second wait before the page is visible.</p>
-
-		<p>This will only slow down the amount of requests which can be processed a minute, making it longer to brute force.</p>
-
-		<br />
-
-		<h3>High Level</h3>
-		<p>There has been an "anti Cross-Site Request Forgery (CSRF) token" used. There is a old myth that this protection will stop brute force attacks. This is not the case.
-			This level also extends on the medium level, by waiting when there is a failed login but this time it is a random amount of time between two and four seconds.
-			The idea of this is to try and confuse any timing predictions.</p>
-
-		<p>Using a <?php echo dvwaExternalLinkUrlGet( 'https://en.wikipedia.org/wiki/CAPTCHA', 'CAPTCHA' ); ?> form could have a similar effect as a CSRF token.</p>
-
-		<br />
-
-		<h3>Impossible Level</h3>
-		<p>Brute force (and user enumeration) should not be possible in the impossible level. The developer has added a "lock out" feature, where if there are five bad logins within
-			the last 15 minutes, the locked out user cannot log in.</p>
-
-		<p>If the locked out user tries to login, even with a valid password, it will say their username or password is incorrect. This will make it impossible to know
-			if there is a valid account on the system, with that password, and if the account is locked.</p>
-
-		<p>This can cause a "Denial of Service" (DoS), by having someone continually trying to login to someone's account.
-			This level would need to be extended by blacklisting the attacker (e.g. IP address, country, user-agent).</p>
 	</div></td>
 	</tr>
 	</table>

@@ -21,14 +21,14 @@ if( !isset( $html ) ) {
 }
 
 // Valid security levels
-$security_levels = array('low', 'medium', 'high', 'impossible');
+$security_levels = array('vulnerable', 'secure');
 if( !isset( $_COOKIE[ 'security' ] ) || !in_array( $_COOKIE[ 'security' ], $security_levels ) ) {
-	// Set security cookie to impossible if no cookie exists
+	// Set security cookie to vulnerable if no cookie exists
 	if( in_array( $_DVWA[ 'default_security_level' ], $security_levels) ) {
 		dvwaSecurityLevelSet( $_DVWA[ 'default_security_level' ] );
 	}
 	else {
-		dvwaSecurityLevelSet( 'impossible' );
+		dvwaSecurityLevelSet( 'vulnerable' );
 	}
 
 	if( $_DVWA[ 'default_phpids_level' ] == 'enabled' )
@@ -139,12 +139,12 @@ function &dvwaPageNewGrab() {
 
 
 function dvwaSecurityLevelGet() {
-	return isset( $_COOKIE[ 'security' ] ) ? $_COOKIE[ 'security' ] : 'impossible';
+	return isset( $_COOKIE[ 'security' ] ) ? $_COOKIE[ 'security' ] : 'secure';
 }
 
 
 function dvwaSecurityLevelSet( $pSecurityLevel ) {
-	if( $pSecurityLevel == 'impossible' ) {
+	if( $pSecurityLevel == 'secure' ) {
 		$httponly = true;
 	}
 	else {
@@ -264,17 +264,11 @@ function dvwaHtmlEcho( $pPage ) {
 	// Get security cookie --
 	$securityLevelHtml = '';
 	switch( dvwaSecurityLevelGet() ) {
-		case 'low':
-			$securityLevelHtml = 'low';
-			break;
-		case 'medium':
-			$securityLevelHtml = 'medium';
-			break;
-		case 'high':
-			$securityLevelHtml = 'high';
+		case 'vulnerable':
+			$securityLevelHtml = 'vulnerable';
 			break;
 		default:
-			$securityLevelHtml = 'impossible';
+			$securityLevelHtml = 'secure';
 			break;
 	}
 	// -- END (security cookie)
@@ -542,7 +536,7 @@ function dvwaGuestbook() {
 	$guestbook = '';
 
 	while( $row = mysqli_fetch_row( $result ) ) {
-		if( dvwaSecurityLevelGet() == 'impossible' ) {
+		if( dvwaSecurityLevelGet() == 'secure' ) {
 			$name    = htmlspecialchars( $row[0] );
 			$comment = htmlspecialchars( $row[1] );
 		}
