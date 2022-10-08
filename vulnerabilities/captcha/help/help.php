@@ -26,9 +26,6 @@
 		<p>The issue with this CAPTCHA is that it is easily bypassed. The developer has made the assumption that all users will progress through screen 1, complete the CAPTCHA, and then
 			move on to the next screen where the password is actually updated. By submitting the new password directly to the change page, the user may bypass the CAPTCHA system.</p>
 
-		<p>The parameters required to complete this challenge in low security would be similar to the following:</p>
-		<pre>Spoiler: <span class="spoiler">?step=2&password_new=password&password_conf=password&Change=Change</span>.</pre>
-
 		<br />
 	</div></td>
 	</tr>

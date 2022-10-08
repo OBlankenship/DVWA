@@ -37,14 +37,9 @@ $page[ 'body' ] .= "
 	<form action=\"#\" method=\"{$method}\">
 		<p>
 			User ID:";
-if( $vulnerabilityFile == 'medium.php' ) {
-	$page[ 'body' ] .= "\n				<select name=\"id\">";
 
-	for( $i = 1; $i < $number_of_rows + 1 ; $i++ ) { $page[ 'body' ] .= "<option value=\"{$i}\">{$i}</option>"; }
-	$page[ 'body' ] .= "</select>";
-}
-else
-	$page[ 'body' ] .= "\n				<input type=\"text\" size=\"15\" name=\"id\">";
+
+$page[ 'body' ] .= "\n				<input type=\"text\" size=\"15\" name=\"id\">";
 
 $page[ 'body' ] .= "\n				<input type=\"submit\" name=\"Submit\" value=\"Submit\">
 		</p>\n";

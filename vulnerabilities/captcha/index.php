@@ -59,8 +59,6 @@ $page[ 'body' ] .= "			New password:<br />
 			<input type=\"password\" AUTOCOMPLETE=\"off\" name=\"password_conf\"><br />
 
 			" . recaptcha_get_html( $_DVWA[ 'recaptcha_public_key' ] );
-if( $vulnerabilityFile == 'high.php' )
-	$page[ 'body' ] .= "\n\n			<!-- **DEV NOTE**   Response: 'hidd3n_valu3'   &&   User-Agent: 'reCAPTCHA'   **/DEV NOTE** -->\n";
 
 $page[ 'body' ] .= "
 			<br />

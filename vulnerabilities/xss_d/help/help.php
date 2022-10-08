@@ -26,7 +26,6 @@
 
 		<h3>Vulnerable Level</h3>
 		<p>Vulnerable level will not check the requested input, before including it to be used in the output text.</p>
-		<pre>Spoiler: <span class="spoiler"><?=htmlentities ("/vulnerabilities/xss_d/?default=English<script>alert(1)</script>")?></span>.</pre>
 
 		<p><br /></p>
 

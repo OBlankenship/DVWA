@@ -25,7 +25,6 @@
 		<h3>Vulnerable Level</h3>
 		<p>The SQL query uses RAW input that is directly controlled by the attacker. All they need to-do is escape the query and then they are able
 			to execute any SQL query they wish.</p>
-		<pre>Spoiler: <span class="spoiler">?id=1' AND sleep 5&Submit=Submit</span>.</pre>
 
 		<br />
 

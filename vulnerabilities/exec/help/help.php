@@ -28,7 +28,6 @@
 		<p>This allows for direct input into one of <u>many PHP functions</u> that will execute commands on the OS. It is possible to escape out of the designed command and
 			executed unintentional actions.</p>
 		<p>This can be done by adding on to the request, "once the command has executed successfully, run this command".
-		<pre>Spoiler: <span class="spoiler">To add a command "&&"</span>. Example: <span class="spoiler">127.0.0.1 && dir</span>.</pre>
 
 		<br />
 	</div></td>

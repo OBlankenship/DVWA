@@ -25,7 +25,6 @@
 
 		<h3>Vulnerable Level</h3>
 		<p>Vulnerable level will not check the requested input, before including it to be used in the output text.</p>
-		<pre>Spoiler: <span class="spoiler">Either name or message field: &lt;script&gt;alert("XSS");&lt;/script&gt;</span>.</pre>
 
 		<br />
 

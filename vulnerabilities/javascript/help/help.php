@@ -13,7 +13,6 @@
 		<hr />
 		<h3>Vulnerable Level</h3>
 		<p>All the JavaScript is included in the page. Read the source and work out what function is being used to generate the token required to match with the phrase and then call the function manually.</p>
-		<pre>Spoiler: <span class="spoiler">Change the phrase to success and then use the function generate_token() to update the token.</span></pre>
 
 		<p><br /></p>
 
