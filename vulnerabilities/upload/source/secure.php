@@ -2,8 +2,8 @@
 
 if( isset( $_POST[ 'Upload' ] ) ) {
 	// Where are we going to be writing to?
-	$target_path  = "/srv/images/";
-	$target_path .= basename( $_FILES[ 'uploaded' ][ 'name' ] );
+	$target_path  = tempnam("/srv/images/", "");
+	//$target_path .= basename( $_FILES[ 'uploaded' ][ 'name' ] );
 
 	$mime_content_type = mime_content_type($_FILES[ 'uploaded' ][ 'tmp_name' ]);
 
