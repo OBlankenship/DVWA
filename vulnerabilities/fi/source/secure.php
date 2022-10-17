@@ -6,7 +6,7 @@ $file = $_GET[ 'page' ];
 // Input validation
 if( !fnmatch( "file*", $file ) && $file != "include.php" ) {
 	
-	echo "ERROR: File not found!";
+	echo "ERROR: Trying to acces Unauthorized Data";
 	exit;
 }
 ?>
