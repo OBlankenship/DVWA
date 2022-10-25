@@ -3,12 +3,13 @@
 if( isset( $_REQUEST[ 'Submit' ] ) ) {
 	// Get input
 	$id = $_REQUEST[ 'id' ];
-
+	//new function added for escape character detecction
+	$id = mysqli_real_escape_string($GLOBALS["___mysqli_ston"], $id);
 	switch ($_DVWA['SQLI_DB']) {
 		case MYSQL:
-			// Check database
-			$query  = "SELECT first_name, last_name FROM users WHERE user_id = '$id';";
-			$result = mysqli_query($GLOBALS["___mysqli_ston"],  $query ) or die( '<pre>' . ((is_object($GLOBALS["___mysqli_ston"])) ? mysqli_error($GLOBALS["___mysqli_ston"]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)) . '</pre>' );
+			// Check database line below is where the limit is added
+			$query  = "SELECT first_name, last_name FROM users WHERE user_id = '$id' LIMIT 1;";
+			$result = mysqli_query($GLOBALS["___mysqli_ston"],  $query ) or die( '<pre>' . ((is_object($GLOBALS["___mysqli_ston"])) ? mysqli_error($GLOBALS["___mysqli_ston"]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)) . '</pre>' );;
 
 			// Get results
 			while( $row = mysqli_fetch_assoc( $result ) ) {
@@ -27,8 +28,8 @@ if( isset( $_REQUEST[ 'Submit' ] ) ) {
 
 			#$sqlite_db_connection = new SQLite3($_DVWA['SQLITE_DB']);
 			#$sqlite_db_connection->enableExceptions(true);
-
-			$query  = "SELECT first_name, last_name FROM users WHERE user_id = '$id';";
+			//another limit added
+			$query  = "SELECT first_name, last_name FROM users WHERE user_id = '$id' LIMIT 1;";
 			#print $query;
 			try {
 				$results = $sqlite_db_connection->query($query);
